@@ -44,15 +44,14 @@ class mobile_pop {
 	function get_options(){
 		$return_array = array();
 		foreach($this->fields as $field => $value){
-			$return_array[$field] = get_option('il-mobile_pop_' .$field);
+			$return_array[$field] = stripslashes(get_option('il-mobile_pop_' .$field));
 		}
 		return $return_array;
 	}
 	function save_options(){
 		if($_POST['save'] == 'save'){
-			error_log('here');
 			foreach($this->fields as $field => $value){
-				update_option('il-mobile_pop_' . $field, $_POST[$field]);
+				update_option('il-mobile_pop_' . $field, stripslashes($_POST[$field]));
 			}
 		}
 	}
