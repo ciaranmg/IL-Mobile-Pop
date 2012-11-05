@@ -8,7 +8,6 @@
    Text Domain: il_mobile_pop
   */
 
-include('Mobile-Detect/Mobile_Detect.php');
 new mobile_pop;
 
 
@@ -21,7 +20,6 @@ class mobile_pop {
 		add_action('admin_menu', array( &$this, 'init_menus'));
 		add_action('wp_footer', array(&$this, 'display_controller'));
 		wp_enqueue_script('jQuery_cookie', plugins_url('js/jquery-cookie/jquery.cookie.js', __FILE__), array('jquery'));
-		$this->detect = new Mobile_Detect();
 	}
 
 	function init_menus(){
@@ -30,9 +28,7 @@ class mobile_pop {
 
 	function display_controller(){
 		if(!$_COOKIE['il_mobile_pop']){
-			if($this->detect->isMobile() OR $this->detect->isTablet()){
 				$this->load_view('entry_pop', $this->get_options());
-			}
 		}
 	}
 

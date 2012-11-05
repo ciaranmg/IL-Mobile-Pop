@@ -54,7 +54,7 @@
 	}
 
 	#header-inside{
-		background: #001854 url('http://dev.internationalliving.com/wp-content/themes/international-living/img/background/header-gradient.gif') repeat-x bottom;
+		background: #001854 url('//internationalliving.com/wp-content/themes/international-living/img/background/header-gradient.gif') repeat-x bottom;
 	}
 
  
@@ -83,19 +83,32 @@
 
 </style>
 <script type="text/javascript">
+
+	function is_touch_device() {  
+		try {  
+			document.createEvent("TouchEvent");  
+			return true;  
+		} catch (e) {  
+			return false;  
+		}
+	}
+
+
 	jQuery(document).ready(function(){
 		
-		jQuery('#slideUp').delay(<?=$delay * 1000;?>).slideDown();
+		if(is_touch_device()){
+			jQuery('#slideUp').delay(<?=$delay * 1000;?>).slideDown();
 		
-		var repeat = <?=$repeat;?>;
-		if(repeat !== 0){
-			jQuery.cookie('il-mobile_pop', 'true', { expires: repeat });
-		}
+			var repeat = <?=$repeat;?>;
+			if(repeat !== 0){
+				jQuery.cookie('il-mobile_pop', 'true', { expires: repeat });
+			}
 
-		jQuery('#slideUp .close').click(function(){
-			jQuery('#slideUp').slideUp();
-			return false;
-		});
+			jQuery('#slideUp .close').click(function(){
+				jQuery('#slideUp').slideUp();
+				return false;
+			});
+		}
 	});
 </script>
 
