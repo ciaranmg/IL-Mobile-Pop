@@ -27,7 +27,7 @@ class mobile_pop {
 	}
 
 	function display_controller(){
-		if(!$_COOKIE['il_mobile_pop']){
+		if(!$_COOKIE['il_mobile_pop'] && !is_user_logged_in()){
 				$this->load_view('entry_pop', $this->get_options());
 		}
 	}
