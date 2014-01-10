@@ -1,4 +1,4 @@
-<?
+<?php
 /*
    Plugin Name: IL Mobile Entry Pop
    Plugin URI: http://www.ilprojects.com/wiki/index.php/Mobile_Pop
