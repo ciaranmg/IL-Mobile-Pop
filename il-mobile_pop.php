@@ -10,7 +10,6 @@
 
 new mobile_pop;
 
-
 class mobile_pop {
 	
 	protected $fields = array('ad_code'=> '', 'repeat' => '86400', 'delay' => '2000');

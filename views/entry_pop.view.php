@@ -84,22 +84,13 @@
 </style>
 <script type="text/javascript">
 
-	function is_touch_device() {  
-		try {  
-			document.createEvent("TouchEvent");  
-			return true;  
-		} catch (e) {  
-			return false;  
-		}
-	}
-
 
 	jQuery(document).ready(function(){
 		
-		if(is_touch_device()){
+		if(Modernizr && Modernizr.touch){
 			jQuery('#slideUp').delay(<?php echo ($delay * 1000);?>).slideDown();
 		
-			var repeat = <?php echo json_encode((bool) $repeat);?>;
+			var repeat = <?php echo json_encode((int) $repeat);?>;
 			if(repeat !== 0){
 				jQuery.cookie('il-mobile_pop', 'true', { expires: repeat });
 			}
