@@ -86,8 +86,8 @@
 
 
 	jQuery(document).ready(function(){
-		
-		if(Modernizr && Modernizr.touch){
+
+		if(typeof Modernizr !== "undefined" && Modernizr.touch){
 			jQuery('#slideUp').delay(<?php echo ($delay * 1000);?>).slideDown();
 		
 			var repeat = <?php echo json_encode((int) $repeat);?>;
