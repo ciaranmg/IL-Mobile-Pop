@@ -8,7 +8,7 @@
 					<label for="ad_code">Copy or Code for your Entry Popup: </label>
 				</th>
 				<td>
-					<textarea name="ad_code" id="ad_code" cols="60" rows="5"><?php echo  esc_attr(get_option('il-mobile_pop_' .'ad_code')); ?></textarea>
+					<textarea name="ad_code" id="ad_code" cols="60" rows="5"><?php echo esc_textarea(get_option('il-mobile_pop_' .'ad_code')); ?></textarea>
 				</td>
 			</tr>
 
