@@ -2,7 +2,7 @@
 /*
    Plugin Name: IL Mobile Entry Pop
    Plugin URI: http://www.ilprojects.com/wiki/index.php/Mobile_Pop
-   Version: 1.0
+   Version: 1.1
    Author: Ciaran McGrath
    Description: Plugin to perform a popup when the site is visited by a mobile browser.
    Text Domain: il_mobile_pop
@@ -11,7 +11,7 @@
 new mobile_pop;
 
 class mobile_pop {
-	
+
 	protected $fields = array('ad_code'=> '', 'repeat' => '86400', 'delay' => '2000');
 	protected $detect;
 
