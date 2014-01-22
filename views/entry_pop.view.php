@@ -1,6 +1,6 @@
 <!-- IL Mobile Entry Pop  		entry_pop.view -->
 <style>
-	
+
 	#slideUp {
 		display: none;
 		position: fixed;
@@ -46,7 +46,7 @@
 	#slideUp input.emailBox{
 		width: 40%;
 		padding: 12px;
-		
+
 	}
 
 	#slideUp label{
@@ -57,7 +57,7 @@
 		background: #001854 url('//internationalliving.com/wp-content/themes/international-living/img/background/header-gradient.gif') repeat-x bottom;
 	}
 
- 
+
 	/* Landscape phones and down */
 	@media only screen and (min-width: 300px) and (max-width: 600px) {
 		#slideUp > div {
@@ -65,7 +65,7 @@
 		}
 
 		#slideUp input.emailBox{
-			font-size: 120%;	
+			font-size: 120%;
 		}
 
 
@@ -89,7 +89,7 @@
 
 		if(typeof Modernizr !== "undefined" && Modernizr.touch){
 			jQuery('#slideUp').delay(<?php echo ($delay * 1000);?>).slideDown();
-		
+
 			var repeat = <?php echo json_encode((int) $repeat);?>;
 			if(repeat !== 0){
 				jQuery.cookie('il-mobile_pop', 'true', { expires: repeat });
