@@ -1,8 +1,8 @@
-<?
+<?php
 /*
    Plugin Name: IL Mobile Entry Pop
    Plugin URI: http://www.ilprojects.com/wiki/index.php/Mobile_Pop
-   Version: 1.0
+   Version: 1.1
    Author: Ciaran McGrath
    Description: Plugin to perform a popup when the site is visited by a mobile browser.
    Text Domain: il_mobile_pop
@@ -10,15 +10,19 @@
 
 new mobile_pop;
 
-
 class mobile_pop {
-	
+
 	protected $fields = array('ad_code'=> '', 'repeat' => '86400', 'delay' => '2000');
 	protected $detect;
 
 	function __construct(){
 		add_action('admin_menu', array( &$this, 'init_menus'));
 		add_action('wp_footer', array(&$this, 'display_controller'));
+		add_action('wp_enqueue_scripts', array(&$this, 'il_core_enqueue_scripts'));
+	}
+
+	function il_core_enqueue_scripts() {
+		wp_enqueue_script('jquery');
 		wp_enqueue_script('jQuery_cookie', plugins_url('js/jquery-cookie/jquery.cookie.js', __FILE__), array('jquery'));
 	}
 
@@ -27,7 +31,7 @@ class mobile_pop {
 	}
 
 	function display_controller(){
-		if(!$_COOKIE['il_mobile_pop'] && !is_user_logged_in()){
+		if(!$_COOKIE['il-mobile_pop'] && !is_user_logged_in()){
 				$this->load_view('entry_pop', $this->get_options());
 		}
 	}
@@ -56,5 +60,3 @@ class mobile_pop {
 		include('views/'. $view_name .'.view.php');
 	}
 }
-
-?>

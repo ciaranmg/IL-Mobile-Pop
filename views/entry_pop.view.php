@@ -1,6 +1,6 @@
 <!-- IL Mobile Entry Pop  		entry_pop.view -->
 <style>
-	
+
 	#slideUp {
 		display: none;
 		position: fixed;
@@ -24,7 +24,7 @@
 	}
 
 	#slideUp > div .close{
-		background-image: url("<?=WP_PLUGIN_URL;?>/il-mobile_pop/img/close.png");
+		background-image: url("<?php echo WP_PLUGIN_URL;?>/il-mobile_pop/img/close.png");
 		cursor: pointer;
 		height: 35px;
 		position: absolute;
@@ -46,7 +46,7 @@
 	#slideUp input.emailBox{
 		width: 40%;
 		padding: 12px;
-		
+
 	}
 
 	#slideUp label{
@@ -57,7 +57,7 @@
 		background: #001854 url('//internationalliving.com/wp-content/themes/international-living/img/background/header-gradient.gif') repeat-x bottom;
 	}
 
- 
+
 	/* Landscape phones and down */
 	@media only screen and (min-width: 300px) and (max-width: 600px) {
 		#slideUp > div {
@@ -65,12 +65,12 @@
 		}
 
 		#slideUp input.emailBox{
-			font-size: 120%;	
+			font-size: 120%;
 		}
 
 
 		#slideUp > div .close{
-			background-image: url("<?=WP_PLUGIN_URL;?>/il-mobile_pop/img/hidpi-close.png");
+			background-image: url("<?php echo WP_PLUGIN_URL;?>/il-mobile_pop/img/hidpi-close.png");
 			cursor: pointer;
 			height: 100px;
 			position: absolute;
@@ -84,22 +84,13 @@
 </style>
 <script type="text/javascript">
 
-	function is_touch_device() {  
-		try {  
-			document.createEvent("TouchEvent");  
-			return true;  
-		} catch (e) {  
-			return false;  
-		}
-	}
-
 
 	jQuery(document).ready(function(){
-		
-		if(is_touch_device()){
-			jQuery('#slideUp').delay(<?=$delay * 1000;?>).slideDown();
-		
-			var repeat = <?=$repeat;?>;
+
+		if(typeof Modernizr !== "undefined" && Modernizr.touch){
+			jQuery('#slideUp').delay(<?php echo ($delay * 1000);?>).slideDown();
+
+			var repeat = <?php echo json_encode((int) $repeat);?>;
 			if(repeat !== 0){
 				jQuery.cookie('il-mobile_pop', 'true', { expires: repeat });
 			}
@@ -115,6 +106,6 @@
 <div id="slideUp">
 	<div>
 		<a class="close"></a>
-		<?=$ad_code;?>
+		<?php echo $ad_code;?>
 	</div>
 </div>
