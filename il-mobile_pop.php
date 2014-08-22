@@ -18,6 +18,11 @@ class mobile_pop {
 	function __construct(){
 		add_action('admin_menu', array( &$this, 'init_menus'));
 		add_action('wp_footer', array(&$this, 'display_controller'));
+		add_action('wp_enqueue_scripts', array(&$this, 'il_core_enqueue_scripts'));
+	}
+
+	function il_core_enqueue_scripts() {
+		wp_enqueue_script('jquery');
 		wp_enqueue_script('jQuery_cookie', plugins_url('js/jquery-cookie/jquery.cookie.js', __FILE__), array('jquery'));
 	}
 
@@ -55,5 +60,3 @@ class mobile_pop {
 		include('views/'. $view_name .'.view.php');
 	}
 }
-
-?>
